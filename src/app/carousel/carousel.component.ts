@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 
 interface CarouselImage {
@@ -15,7 +15,17 @@ interface CarouselImage {
 export class CarouselComponent implements OnInit {
 
   @Input() images: CarouselImage[]=[];
-  @Input() indicators: boolean = false;
+  @Input() indicators: boolean = true;
+  @Input() controls: boolean = true;
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft') {
+      this.prevImage();
+    } else if (event.key === 'ArrowRight') {
+      this.nextImage();
+    }
+  }
 
   selectedIndex = 0;
   ngOnInit(): void {
@@ -23,6 +33,20 @@ export class CarouselComponent implements OnInit {
 
   selectImage(index:number) {
     this.selectedIndex = index;
+  }
+
+  prevImage(){
+    if(this.selectedIndex == 0)
+      this.selectedIndex = this.images.length - 1;
+    else
+      this.selectedIndex= this.selectedIndex - 1;
+  } 
+
+  nextImage(){
+    if(this.selectedIndex == this.images.length - 1 )
+      this.selectedIndex = 0;
+    else
+      this.selectedIndex= this.selectedIndex + 1;
   }
 
 }

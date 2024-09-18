@@ -5,7 +5,12 @@
 
     <div  *ngIf="indicators"  class="carousel-indicator-container">
         <span *ngFor="let indicator of images; let i = index;" class="indicator"  [ngClass]="{'active':selectedIndex === i}" (click)="selectImage(i)">
-
         </span>
+    </div>
+    <div *ngIf="controls" class="carousel-btn btn-prev" (click)="prevImage()" >
+        <i class="fas fa-arrow-circle-left icon-carousel icon-prev"></i>
+    </div>
+    <div *ngIf="controls" class="carousel-btn btn-next" (click)="nextImage()">
+        <i class="fas fa-arrow-circle-right icon-carousel icon-next"></i>
     </div>
 </div>
