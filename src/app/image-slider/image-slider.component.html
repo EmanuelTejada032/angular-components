@@ -1,0 +1,8 @@
+<div class="slider-container">
+    <div class="slider-wrapper" #slider>
+      <div *ngFor="let image of images; let i = index;" class="slider-item">
+        <img [src]="image.imageSrc" (click)="scrollToImage(i)" />
+        <span class="image-tag">{{image.imageAlt}}</span>
+      </div>
+    </div>
+  </div>

@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.container {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    width: 1400px;
+    border-radius:15px;
+}
